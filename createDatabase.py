@@ -3,7 +3,7 @@
 import MySQLdb
 
 # Open database connection
-db = MySQLdb.connect("localhost","lumi","1","TCC" )
+db = MySQLdb.connect("localhost","root","","TCC" )
 
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
@@ -13,11 +13,20 @@ cursor.execute("DROP TABLE IF EXISTS Material")
 
 # Create table as per requirement
 sql = """CREATE TABLE Material(
-         FIRST_NAME  CHAR(20) NOT NULL,
-         LAST_NAME  CHAR(20),
-         AGE INT,  
-         SEX CHAR(1),
-         INCOME FLOAT )"""
+         id INT NOT NULL,
+         type CHAR(20),
+         author CHAR(100),  
+         year INT,
+	 url CHAR(100),
+	 purpose CHAR(200),
+	 audience CHAR(100),
+	 colaborators CHAR(100),
+	 price FLOAT,
+	 language CHAR(100),
+	 equipment CHAR(200),
+	 headset CHAR(100),
+	 headsetPotential CHAR(200),
+	 evaluation CHAR(100) )"""
 
 cursor.execute(sql)
 
