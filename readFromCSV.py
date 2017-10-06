@@ -15,13 +15,13 @@ csvData = csv.reader(file('data.csv'))
 # inserting in the database
 for row in csvData:
 	cursor.execute('INSERT INTO Material( \
-			id, type, author, year, \
-			url, purpose, audience, \
+			id, type, title, author, year, institution, \
+			country, url, searchEngine,  purpose, audience, \
 			colaborators, price, language, \
 			equipment, headset, headsetPotential, \
 			evaluation) \
 			VALUES("%d", "%s", "%s", "%d", \
-			"%s", "%s", "%s", "%s", "%f", \
+			"%s", "%s", "%s", "%s", "%s", "%f", \
 			"%s", "%s", "%s", "%s", "%s")', row)
 
 # disconnect from server
