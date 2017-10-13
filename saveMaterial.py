@@ -3,6 +3,20 @@
 import MySQLdb
 import sys
 
+def rawInput(text):
+	print(text)
+	contents = []
+	s = ""
+	while True:
+		try:
+			line = raw_input("")
+			line.replace("\n", " ")
+		except EOFError:
+			return s.join(contents)
+		contents.append(line)
+		print(contents)
+		print("press ctrl+D to stop reading")
+
 # Open database connection
 db = MySQLdb.connect("localhost","root","","TCC" )
 
@@ -10,7 +24,7 @@ db = MySQLdb.connect("localhost","root","","TCC" )
 cursor = db.cursor()
 
 # Read material title
-m_title = raw_input("What's the material title?\n")
+m_title = rawInput("What's the material title?")
 
 # Check if Material already exists
 dbQuery = "SELECT * FROM Material WHERE title='"+m_title+"'"
@@ -22,29 +36,29 @@ if (cursor.rowcount != 0):
 	for row in res:
 		print row
 
-	is_new = raw_input("\n")
+	is_new = rawInput("\n")
 	if(is_new == "no"):
 		engine = raw_input("Whats the search engine used?\n") 
 		#TODO
 		sys.exit(0)
 
 # Insert new material
-m_type = raw_input("Material type:\n")
-m_author = raw_input("Author:\n")
-m_year = raw_input("Year:\n")
-m_institution = raw_input("Institution\n")
-m_country = raw_input("Country:\n")
-m_url = raw_input("url:\n")
-m_engine = raw_input("Search Engine:\n")
-m_purpose = raw_input("Purpose:\n")
-m_audience = raw_input("Audience:\n")
-m_colaborators = raw_input("Colaborators:\n")
-m_price = raw_input("Price:\n")
-m_language = raw_input("Language:\n")
-m_equipment = raw_input("Other equipment used:\n")
-m_headset = raw_input("Headset used:\n")
-m_potential = raw_input("Headset potential:\n")
-m_eval = raw_input("App evaluation:\n")
+m_type = rawInput("Material type:")
+m_author = rawInput("Author:")
+m_year = rawInput("Year:")
+m_institution = rawInput("Institution")
+m_country = rawInput("Country:")
+m_url = rawInput("url:")
+m_engine = rawInput("Search Engine:")
+m_purpose = rawInput("Purpose:")
+m_audience = rawInput("Audience:")
+m_colaborators = rawInput("Colaborators:")
+m_price = rawInput("Price:")
+m_language = rawInput("Language:")
+m_equipment = rawInput("Other equipment used:")
+m_headset = rawInput("Headset used:")
+m_potential = rawInput("Headset potential:")
+m_eval = rawInput("App evaluation:")
 
 dbQuery = 'INSERT INTO Material ( \
 		type, title, author, year, institution, \
